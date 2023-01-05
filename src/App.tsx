@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import 'regenerator-runtime/runtime'
 
 import { SideBar } from './components/SideBar';
 import { Content } from './components/Content';
@@ -51,9 +52,9 @@ export function App() {
     })
   }, [selectedGenreId]);
 
-  function handleClickButton(id: number) {
-    setSelectedGenreId(id);
-  }
+  const handleClickButton = useCallback(async (id: number) => {
+    setSelectedGenreId(id)
+  }, [])
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
